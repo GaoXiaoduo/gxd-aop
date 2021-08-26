@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'android-aspectjx'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.gxd.aop"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            // Zipalign优化 true
+            zipAlignEnabled true
+            // 移除无用的resource文件 true
+            shrinkResources true
+            // 启用Android插件压缩器
+            // useProguard true
+            // 代码压缩/是否进行混淆 true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+aspectjx {
+    enabled true
+    // fix Didn't find class "com.umeng.message.provider.MessageProvider" on path: DexPathList
+    //exclude 'com.umeng', 'com.alipay', 'com.taobao', 'com.google', 'com.sun', 'com.tencent', 'com.squareup', 'org.apache', 'io.reactivex', 'razerdp.basepopup'
+    exclude 'androidx', 'com.google', 'com.squareup', 'org.apache', 'versions.9'
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    //aspectjrt
+    //implementation  'org.aspectj:aspectjrt:1.9.5'
+    implementation project(path: ':lib:lib-click-filter')
+    implementation project(path: ':lib:lib-base-adapter')
+    //implementation 'ly.count.android:sdk:20.11.7'
+    implementation 'com.alibaba:fastjson:1.2.61'
+
+    // SmartRefreshLayout 1.0.5及以前版本的老用户升级需谨慎，API改动过大 https://github.com/scwang90/SmartRefreshLayout
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
+    // SmartRefreshHeader  没有使用特殊Header，可以不加这行 https://github.com/scwang90/SmartRefreshLayout
+    implementation "com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1"
+
+}

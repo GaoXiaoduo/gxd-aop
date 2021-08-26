@@ -1,0 +1,4 @@
+include ':lib:lib-base-adapter'
+include ':lib:lib-click-filter'
+include ':app'
+rootProject.name = "My Application"
