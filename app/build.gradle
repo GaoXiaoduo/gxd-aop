@@ -50,7 +50,7 @@ aspectjx {
 
     exclude 'com.umeng', 'com.alipay', 'com.taobao', 'com.google', 'androidx', 'com.sun', 'com.tencent', 'com.squareup', 'org.apache', 'io.reactivex', 'razerdp.basepopup', 'versions.9'
     exclude 'com.kizitonwose', 'com.haibin', 'kotlin', 'com.baidu', 'com.alibaba', 'top.zibin', 'com.android', 'org.gradle', 'com.ct', 'com.qlife', 'com.quhuo', 'com.okeyun', 'org.greenrobot'
-    exclude 'com.aliyun', 'com.contrarywind', 'ly.count','com.gxd','java','com.scwang','org.aspectj','org'
+    exclude 'com.aliyun', 'com.contrarywind', 'ly.count','com.gxd','java','com.scwang','org.aspectj','org','javax','jdk'
 }
 
 dependencies {
